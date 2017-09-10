@@ -7,6 +7,7 @@
 using namespace std;
 
 #define ANSWER_NUM 4
+#define RESULT_NUM 16
 
 int answer[ANSWER_NUM];	//各設問の回答値
 int answerSum;			//回答の合算値
@@ -16,6 +17,7 @@ bool sessionFlag = true;//プログラムの継続を決めるフラグ変数
 char buff[2048];
 char name[512];
 
+char fileNameHead[RESULT_NUM] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
 
 int main(){
 
@@ -50,109 +52,24 @@ int main(){
 		fpw << "<h2>" << name << "さんのタイプは</h2>" << endl;
 		answerSum = answer[0] + answer[1] + answer[2] + answer[3];
 		cout << answerSum << endl;
-		if(answerSum == 0){
-			ifstream fp1("a.txt");
+
+		/*ファイル出力部*/
+		if (answerSum >= 0 && answerSum < RESULT_NUM){
+			std::string fileName(1,fileNameHead[answerSum]);	//fileName変数にa,b,c,...のアルファベットを代入
+			fileName += ".txt";									//fileName変数に".txt"を付ける。
+			ifstream fp1(fileName);								//a.txt,b.txt....の結果格納ファイルのオープン
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
-		}
-		else if(answerSum == 1){
-			ifstream fp1("b.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 2){
-			ifstream fp1("c.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 3){
-			ifstream fp1("d.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 4){
-			ifstream fp1("e.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 5){
-			ifstream fp1("f.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 6){
-			ifstream fp1("g.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 7){
-			ifstream fp1("h.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 8){
-			ifstream fp1("i.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 9){
-			ifstream fp1("j.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 10){
-			ifstream fp1("k.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 11){
-			ifstream fp1("l.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 12){
-			ifstream fp1("m.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 13){
-			ifstream fp1("n.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 14){
-			ifstream fp1("o.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
-		}
-		else if(answerSum == 15){
-			ifstream fp1("p.txt");
-			while(fp1 >> buff){
-				fpw << buff << endl;
-			}
+			system("test.bat");
 		}
 		else{
 			cout << "error" << endl;
 			return EXIT_FAILURE;
 		}
-		system("test.bat");
 
-		int inputStorage;		//継続の可否判断入力を格納する変数
+		/*継続可否決定部*/
+		int inputStorage;										//継続の可否判断入力を格納する変数
 		cout << "coutinue?yes=1,no=0" << endl;
 		cin >> inputStorage;
 		
