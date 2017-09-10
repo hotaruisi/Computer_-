@@ -23,16 +23,18 @@ char name[512];
 char fileNameHead[RESULT_NUM] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
 
 int main(){
-	//本当はstring配列を使いたいけどSTLコンテナ(Vector)使うことになるので省略
+	//本当はstring配列を使いたいけどSTLコンテナ(Vector)使うことになるのでC的な書き方で
 	char questionSentence[QUESTIONE_NUM][100];
-	strcpy(questionSentence[0],"Q1:質問1");
-	strcpy(questionSentence[1],"Q2:質問2");
-	strcpy(questionSentence[2],"Q3:質問3");
-	strcpy(questionSentence[3],"Q4:質問4");
+	strcpy_s(questionSentence[0], "Q1:質問1");
+	strcpy_s(questionSentence[1], "Q2:質問2");
+	strcpy_s(questionSentence[2], "Q3:質問3");
+	strcpy_s(questionSentence[3], "Q4:質問4");
 
 
 	while (sessionFlag){
 		
+		answerSum = 0;
+
 		ofstream fpw("output.html");
 		cout << "名前を入力してください" << endl;
 		cin >> name;
@@ -42,8 +44,7 @@ int main(){
 			cout << questionSentence[i] << endl;
 			cout << "yes=1 no=0" << endl;
 			cin >> inputAnswer;
-			if (inputAnswer == 1){ answer[i] = pow(2,i); }		//pow(2,i)->2^i  (2,0)->1 ,(2,1)->2 , (2,2)->4 , (2,3)->8
-			else{ answer[i] = 0; }
+			if (inputAnswer == 1){ answerSum += (int)pow(2, i); }		//pow(2,i)->2^i  (2,0)->1 ,(2,1)->2 , (2,2)->4 , (2,3)->8
 		}
 
 
@@ -54,7 +55,6 @@ int main(){
 		}
 
 		fpw << "<h2>" << name << "さんのタイプは</h2>" << endl;
-		answerSum = answer[0] + answer[1] + answer[2] + answer[3];
 		cout << answerSum << endl;
 
 		/*ファイル出力部*/
