@@ -1,33 +1,21 @@
 #include<stdio.h>
-
 #include<stdlib.h>
-
 #include<cstring>
-
 #include<fstream>
-
 #include<iostream>
+
 using namespace std;
 
 
 int ans1;
-
 int ans2;
-
 int ans3;
-
 int ans4;
-
 int ans;
-
 int co;
-
 int body = '1';
 
-
 char buff[2048];
-
-
 char name[512];
 
 
@@ -38,25 +26,18 @@ int main(){
 		ofstream fpw("output.html");
 
 		cout << "–¼‘O‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << endl;
-
 		cin >> name
 ;
 		cout << "Q1:Ž¿–â‚P" << endl;
-
 		cout << "yes=1 no=0" << endl;
-
 		cin >> ans1;
 
 		cout << "Q2:" << endl;
-
 		cout << "yes=2 no=0"<< endl;
-
 		cin >> ans2;
 
 		cout << "Q3:" << endl;
-
 		cout << "yes=4 no=0" << endl;
-
 		cin >> ans3;
 
 		cout << "Q4:" << endl;
