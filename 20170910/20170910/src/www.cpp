@@ -10,7 +10,8 @@ using namespace std;
 
 int answer[ANSWER_NUM];	//Šeİ–â‚Ì‰ñ“š’l
 int answerSum;			//‰ñ“š‚Ì‡Z’l
-int body = '1';
+bool sessionFlag = true;//ƒvƒƒOƒ‰ƒ€‚ÌŒp‘±‚ğŒˆ‚ß‚éƒtƒ‰ƒO•Ï”
+
 
 char buff[2048];
 char name[512];
@@ -18,7 +19,7 @@ char name[512];
 
 int main(){
 
-	while(body){
+	while (sessionFlag){
 
 		ofstream fpw("output.html");
 
@@ -149,11 +150,17 @@ int main(){
 			cout << "error" << endl;
 			return EXIT_FAILURE;
 		}
-		cout << "coutinue?yes=1,no=0" << endl;
-
 		system("test.bat");
 
-		cin >> body;
+		int inputStorage;		//Œp‘±‚Ì‰Â”Û”»’f“ü—Í‚ğŠi”[‚·‚é•Ï”
+		cout << "coutinue?yes=1,no=0" << endl;
+		cin >> inputStorage;
+		
+		if (inputStorage == 1){
+			sessionFlag = true;
+		}else{
+			sessionFlag = false;
+		}
 	}
 	return 0;
 }
