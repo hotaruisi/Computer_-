@@ -1,13 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+#include<math.h>
 #include<cstring>
 #include<fstream>
 #include<iostream>
 
 using namespace std;
 
-#define ANSWER_NUM 4
-#define RESULT_NUM 16
+#define QUESTIONE_NUM	4
+#define ANSWER_NUM		QUESTIONE_NUM
+#define RESULT_NUM		16
 
 int answer[ANSWER_NUM];	//各設問の回答値
 int answerSum;			//回答の合算値
@@ -20,29 +23,30 @@ char name[512];
 char fileNameHead[RESULT_NUM] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
 
 int main(){
+	//本当はstring配列を使いたいけどSTLコンテナ(Vector)使うことになるので省略
+	char questionSentence[QUESTIONE_NUM][100];
+	strcpy(questionSentence[0],"Q1:質問1");
+	strcpy(questionSentence[1],"Q2:質問2");
+	strcpy(questionSentence[2],"Q3:質問3");
+	strcpy(questionSentence[3],"Q4:質問4");
+
 
 	while (sessionFlag){
-
+		
 		ofstream fpw("output.html");
-
 		cout << "名前を入力してください" << endl;
-		cin >> name
-;
-		cout << "Q1:質問１" << endl;
-		cout << "yes=1 no=0" << endl;
-		cin >> answer[0];
+		cin >> name;
 
-		cout << "Q2:" << endl;
-		cout << "yes=2 no=0"<< endl;
-		cin >> answer[1];
+		for (int i = 0; i < QUESTIONE_NUM; i++){
+			int inputAnswer;
+			cout << questionSentence[i] << endl;
+			cout << "yes=1 no=0" << endl;
+			cin >> inputAnswer;
+			if (inputAnswer == 1){ answer[i] = pow(2,i); }		//pow(2,i)->2^i  (2,0)->1 ,(2,1)->2 , (2,2)->4 , (2,3)->8
+			else{ answer[i] = 0; }
+		}
 
-		cout << "Q3:" << endl;
-		cout << "yes=4 no=0" << endl;
-		cin >> answer[2];
 
-		cout << "Q4:" << endl;
-		cout << "yes=8 no=0" << endl;
-		cin >> answer[3];
 
 		ifstream fp1("read.txt");
 		while(fp1 >> buff){
