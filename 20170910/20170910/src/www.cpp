@@ -1,33 +1,18 @@
 #include<stdio.h>
-
 #include<stdlib.h>
-
 #include<cstring>
-
 #include<fstream>
-
 #include<iostream>
+
 using namespace std;
 
+#define ANSWER_NUM 4
 
-int ans1;
-
-int ans2;
-
-int ans3;
-
-int ans4;
-
-int ans;
-
-int co;
-
+int answer[ANSWER_NUM];	//各設問の回答値
+int answerSum;			//回答の合算値
 int body = '1';
 
-
 char buff[2048];
-
-
 char name[512];
 
 
@@ -38,30 +23,23 @@ int main(){
 		ofstream fpw("output.html");
 
 		cout << "名前を入力してください" << endl;
-
 		cin >> name
 ;
 		cout << "Q1:質問１" << endl;
-
 		cout << "yes=1 no=0" << endl;
-
-		cin >> ans1;
+		cin >> answer[0];
 
 		cout << "Q2:" << endl;
-
 		cout << "yes=2 no=0"<< endl;
-
-		cin >> ans2;
+		cin >> answer[1];
 
 		cout << "Q3:" << endl;
-
 		cout << "yes=4 no=0" << endl;
-
-		cin >> ans3;
+		cin >> answer[2];
 
 		cout << "Q4:" << endl;
 		cout << "yes=8 no=0" << endl;
-		cin >> ans4;
+		cin >> answer[3];
 
 		ifstream fp1("read.txt");
 		while(fp1 >> buff){
@@ -69,99 +47,99 @@ int main(){
 		}
 
 		fpw << "<h2>" << name << "さんのタイプは</h2>" << endl;
-		ans = ans1 + ans2 + ans3 + ans4;
-		cout << ans << endl;
-		if(ans == 0){
+		answerSum = answer[0] + answer[1] + answer[2] + answer[3];
+		cout << answerSum << endl;
+		if(answerSum == 0){
 			ifstream fp1("a.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 1){
+		else if(answerSum == 1){
 			ifstream fp1("b.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 2){
+		else if(answerSum == 2){
 			ifstream fp1("c.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 3){
+		else if(answerSum == 3){
 			ifstream fp1("d.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 4){
+		else if(answerSum == 4){
 			ifstream fp1("e.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 5){
+		else if(answerSum == 5){
 			ifstream fp1("f.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 6){
+		else if(answerSum == 6){
 			ifstream fp1("g.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 7){
+		else if(answerSum == 7){
 			ifstream fp1("h.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 8){
+		else if(answerSum == 8){
 			ifstream fp1("i.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 9){
+		else if(answerSum == 9){
 			ifstream fp1("j.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 10){
+		else if(answerSum == 10){
 			ifstream fp1("k.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 11){
+		else if(answerSum == 11){
 			ifstream fp1("l.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 12){
+		else if(answerSum == 12){
 			ifstream fp1("m.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 13){
+		else if(answerSum == 13){
 			ifstream fp1("n.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 14){
+		else if(answerSum == 14){
 			ifstream fp1("o.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
 			}
 		}
-		else if(ans == 15){
+		else if(answerSum == 15){
 			ifstream fp1("p.txt");
 			while(fp1 >> buff){
 				fpw << buff << endl;
