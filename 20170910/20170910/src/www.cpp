@@ -8,9 +8,9 @@
 
 using namespace std;
 
-#define QUESTIONE_NUM	4
-#define ANSWER_NUM		QUESTIONE_NUM
-#define RESULT_NUM		16
+#define QUESTIONE_NUM	4					//設問の数
+#define ANSWER_NUM		QUESTIONE_NUM		//設問に対する回答の数
+#define RESULT_FILE_NUM		16				//結果ファイルの数
 
 int answer[ANSWER_NUM];	//各設問の回答値
 int answerSum;			//回答の合算値
@@ -20,7 +20,7 @@ bool sessionFlag = true;//プログラムの継続を決めるフラグ変数
 char buff[2048];
 char name[512];
 
-char fileNameHead[RESULT_NUM] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
+char fileNameHead[RESULT_FILE_NUM] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p' };
 
 int main(){
 	//本当はstring配列を使いたいけどSTLコンテナ(Vector)使うことになるのでC的な書き方で
@@ -47,8 +47,6 @@ int main(){
 			if (inputAnswer == 1){ answerSum += (int)pow(2, i); }		//pow(2,i)->2^i  (2,0)->1 ,(2,1)->2 , (2,2)->4 , (2,3)->8
 		}
 
-
-
 		ifstream fp1("read.txt");
 		while(fp1 >> buff){
 			fpw << buff << endl;
@@ -58,7 +56,7 @@ int main(){
 		cout << answerSum << endl;
 
 		/*ファイル出力部*/
-		if (answerSum >= 0 && answerSum < RESULT_NUM){
+		if (answerSum >= 0 && answerSum < RESULT_FILE_NUM){
 			std::string fileName(1,fileNameHead[answerSum]);	//fileName変数にa,b,c,...のアルファベットを代入
 			fileName += ".txt";									//fileName変数に".txt"を付ける。
 			ifstream fp1(fileName);								//a.txt,b.txt....の結果格納ファイルのオープン
