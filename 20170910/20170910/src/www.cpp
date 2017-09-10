@@ -64,7 +64,7 @@ int main(){
 		cin >> ans4;
 
 		ifstream fp1("read.txt");
-		while(fp1 > buff){
+		while(fp1 >> buff){
 			fpw << buff << endl;
 		}
 
@@ -173,7 +173,7 @@ int main(){
 		}
 		cout << "coutinue?yes=1,no=0" << endl;
 
-		system(".\test.bat");
+		system("test.bat");
 
 		cin >> body;
 	}
